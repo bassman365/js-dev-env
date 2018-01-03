@@ -4,9 +4,11 @@
   "description": "javascript development environment",
   "main": "index.js",
   "scripts": {
-    "test": "test",
-    "start": "./node_modules/nsp/bin/nsp check",
-    "check": "./node_modules/nsp/bin/nsp check"
+    "test" : "test",
+    "prestart" : "babel-node buildScripts/startMessage.js",
+    "start" : "npm-run-all --parallel security-check serve-src",
+    "serve-src" : "babel-node buildScripts/srcServer.js",
+    "security-check" : "nsp check"
   },
   "repository": {
     "type": "git",

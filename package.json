@@ -4,10 +4,13 @@
   "description": "javascript development environment",
   "main": "index.js",
   "scripts": {
-    "test" : "test",
     "prestart" : "babel-node buildScripts/startMessage.js",
-    "start" : "npm-run-all --parallel security-check serve-src",
+    "start" : "npm-run-all --parallel security-check serve-src lint-watch",
     "serve-src" : "babel-node buildScripts/srcServer.js",
+    "test" : "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
+    "test-watch" : "npm run test -- --watch",
+    "lint" : "esw webpack.config.* src buildScripts",
+    "lint-watch": "npm run lint -- --watch",
     "security-check" : "nsp check"
   },
   "repository": {
